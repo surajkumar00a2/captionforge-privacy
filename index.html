@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – CaptionForge AI</title>
+  <meta name="description" content="Privacy Policy for AI Caption Generator & Hashtag Tool by CaptionForge AI" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080810;
+      --bg-card: #0f0f1c;
+      --bg-section: #12121f;
+      --border: rgba(108, 99, 255, 0.15);
+      --primary: #6c63ff;
+      --primary-glow: rgba(108, 99, 255, 0.25);
+      --accent: #ff6584;
+      --accent2: #48cfad;
+      --text: #eeeeff;
+      --text-secondary: #8888aa;
+      --text-muted: #44445a;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Subtle noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* Glow orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.12;
+    }
+    .orb-1 { width: 600px; height: 600px; background: var(--primary); top: -200px; right: -200px; }
+    .orb-2 { width: 400px; height: 400px; background: var(--accent); bottom: 10%; left: -150px; }
+
+    /* Header */
+    header {
+      position: relative;
+      z-index: 10;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8, 8, 16, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: sticky;
+      top: 0;
+    }
+
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text span {
+      color: var(--primary);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      z-index: 10;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 24px 48px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      background: rgba(108, 99, 255, 0.1);
+      border: 1px solid rgba(108, 99, 255, 0.3);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .badge::before { content: '●'; font-size: 8px; }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .meta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent2);
+    }
+
+    /* TOC */
+    .toc-wrapper {
+      position: relative;
+      z-index: 10;
+      max-width: 860px;
+      margin: 0 auto 48px;
+      padding: 0 24px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 32px;
+    }
+
+    .toc-title {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 8px;
+    }
+
+    .toc-list li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 6px 0;
+      transition: color 0.2s;
+    }
+
+    .toc-list li a:hover { color: var(--primary); }
+
+    .toc-list li a::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--primary);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* Main content */
+    main {
+      position: relative;
+      z-index: 10;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 32px;
+      background: var(--bg-section);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .section:nth-child(1) { animation-delay: 0.15s; }
+    .section:nth-child(2) { animation-delay: 0.2s; }
+    .section:nth-child(3) { animation-delay: 0.25s; }
+    .section:nth-child(4) { animation-delay: 0.3s; }
+    .section:nth-child(5) { animation-delay: 0.35s; }
+    .section:nth-child(6) { animation-delay: 0.4s; }
+    .section:nth-child(7) { animation-delay: 0.45s; }
+    .section:nth-child(8) { animation-delay: 0.5s; }
+    .section:nth-child(9) { animation-delay: 0.55s; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 28px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(108, 99, 255, 0.04);
+    }
+
+    .section-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .icon-purple { background: rgba(108, 99, 255, 0.15); }
+    .icon-pink   { background: rgba(255, 101, 132, 0.15); }
+    .icon-green  { background: rgba(72, 207, 173, 0.15); }
+    .icon-orange { background: rgba(255, 159, 67, 0.15); }
+    .icon-blue   { background: rgba(29, 161, 242, 0.15); }
+    .icon-red    { background: rgba(255, 71, 87, 0.15); }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .section-body {
+      padding: 24px 28px;
+    }
+
+    .section-body p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .section-body p:last-child { margin-bottom: 0; }
+
+    /* Sub items */
+    .sub-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+
+    .sub-item:last-child { margin-bottom: 0; }
+
+    .sub-item-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sub-item-title .num {
+      width: 22px;
+      height: 22px;
+      background: var(--primary);
+      border-radius: 6px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: var(--font-display);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .sub-item p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* List items */
+    .pill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pill-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    .pill-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      margin-top: 9px;
+      flex-shrink: 0;
+    }
+
+    /* Numbered list */
+    .numbered-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .numbered-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .n-badge {
+      width: 26px;
+      height: 26px;
+      background: rgba(108, 99, 255, 0.15);
+      border: 1px solid rgba(108, 99, 255, 0.3);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--font-display);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .numbered-item p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin: 0 !important;
+    }
+
+    /* Link chips */
+    .link-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .link-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .link-chip:hover {
+      background: rgba(108, 99, 255, 0.1);
+      border-color: rgba(108, 99, 255, 0.4);
+    }
+
+    .link-chip::before { content: '↗'; font-size: 12px; }
+
+    /* Contact card */
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 22px;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 3px;
+    }
+
+    .contact-email {
+      color: var(--primary);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .contact-email:hover { text-decoration: underline; }
+
+    /* Warning box */
+    .warning-box {
+      display: flex;
+      gap: 14px;
+      background: rgba(255, 159, 67, 0.06);
+      border: 1px solid rgba(255, 159, 67, 0.2);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-top: 16px;
+    }
+
+    .warning-icon { font-size: 20px; flex-shrink: 0; }
+
+    .warning-box p {
+      color: rgba(255, 159, 67, 0.85) !important;
+      font-size: 14px !important;
+      margin: 0 !important;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 28px 0;
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo-mark {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .section-header { padding: 18px 20px; }
+      .section-body { padding: 20px; }
+      .toc { padding: 22px 20px; }
+      .toc-list { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -1px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-mark">⚡</div>
+      <span class="logo-text">Caption<span>Forge</span> AI</span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="badge">Legal</div>
+    <h1>Privacy <em>Policy</em></h1>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="meta-dot"></div>
+        AI Caption Generator &amp; Hashtag Tool
+      </div>
+      <div class="meta-item">
+        <div class="meta-dot" style="background:var(--primary)"></div>
+        Last updated: March 2026
+      </div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc-wrapper">
+    <div class="toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#information">Information We Collect</a></li>
+        <li><a href="#how-we-use">How We Use Your Data</a></li>
+        <li><a href="#sharing">Data Sharing</a></li>
+        <li><a href="#third-party">Third Party Services</a></li>
+        <li><a href="#children">Children's Privacy</a></li>
+        <li><a href="#retention">Data Retention</a></li>
+        <li><a href="#rights">Your Rights</a></li>
+        <li><a href="#changes">Changes to Policy</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#terms">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main>
+
+    <!-- Introduction -->
+    <div class="section" id="introduction">
+      <div class="section-header">
+        <div class="section-icon icon-purple">📋</div>
+        <div class="section-title">Introduction</div>
+      </div>
+      <div class="section-body">
+        <p>CaptionForge AI ("we", "our", or "us") operates the <strong style="color:var(--text)">AI Caption Generator &amp; Hashtag Tool</strong> mobile application (the "App"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our App.</p>
+      </div>
+    </div>
+
+    <!-- Information We Collect -->
+    <div class="section" id="information">
+      <div class="section-header">
+        <div class="section-icon icon-blue">🔍</div>
+        <div class="section-title">Information We Collect</div>
+      </div>
+      <div class="section-body">
+        <div class="sub-item">
+          <div class="sub-item-title"><span class="num">1</span> Advertising Data</div>
+          <p>Our App uses Google AdMob to display advertisements. AdMob may collect and use your device's Advertising ID to show personalized ads. This is governed by Google's Privacy Policy.</p>
+        </div>
+        <div class="sub-item">
+          <div class="sub-item-title"><span class="num">2</span> Locally Stored Data</div>
+          <p>The App stores your saved captions locally on your device using your device's storage. This data never leaves your device and is not transmitted to our servers.</p>
+        </div>
+        <div class="sub-item">
+          <div class="sub-item-title"><span class="num">3</span> Usage Data</div>
+          <p>We do not collect any personal usage data, analytics, or crash reports directly. AdMob may collect anonymized usage statistics as part of ad serving.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- How We Use -->
+    <div class="section" id="how-we-use">
+      <div class="section-header">
+        <div class="section-icon icon-green">⚙️</div>
+        <div class="section-title">How We Use Your Data</div>
+      </div>
+      <div class="section-body">
+        <div class="pill-list">
+          <div class="pill-item">To serve relevant advertisements via Google AdMob</div>
+          <div class="pill-item">To store your saved captions locally on your device</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Sharing -->
+    <div class="section" id="sharing">
+      <div class="section-header">
+        <div class="section-icon icon-orange">🔒</div>
+        <div class="section-title">Data Sharing</div>
+      </div>
+      <div class="section-body">
+        <p>We do not sell, trade, or share your personal data with third parties except in these limited circumstances:</p>
+        <div class="pill-list" style="margin-top:14px">
+          <div class="pill-item">Google AdMob for ad serving purposes</div>
+          <div class="pill-item">As required by applicable law</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Third Party -->
+    <div class="section" id="third-party">
+      <div class="section-header">
+        <div class="section-icon icon-purple">🔗</div>
+        <div class="section-title">Third Party Services</div>
+      </div>
+      <div class="section-body">
+        <p>Our App uses the following third-party services that have their own Privacy Policies:</p>
+        <div class="link-chips" style="margin-top:16px">
+          <a class="link-chip" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google AdMob Privacy Policy</a>
+          <a class="link-chip" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Play Services Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Children -->
+    <div class="section" id="children">
+      <div class="section-header">
+        <div class="section-icon icon-pink">👶</div>
+        <div class="section-title">Children's Privacy</div>
+      </div>
+      <div class="section-body">
+        <p>Our App does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13.</p>
+        <div class="warning-box">
+          <div class="warning-icon">⚠️</div>
+          <p>If you are a parent or guardian and you are aware that your child has provided us with personal data, please contact us immediately so we can take necessary action.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Retention -->
+    <div class="section" id="retention">
+      <div class="section-header">
+        <div class="section-icon icon-green">🗄️</div>
+        <div class="section-title">Data Retention</div>
+      </div>
+      <div class="section-body">
+        <p>Saved captions are stored locally on your device and can be deleted at any time within the App or by uninstalling the App. We do not retain any user data on our servers.</p>
+      </div>
+    </div>
+
+    <!-- Your Rights -->
+    <div class="section" id="rights">
+      <div class="section-header">
+        <div class="section-icon icon-blue">✅</div>
+        <div class="section-title">Your Rights</div>
+      </div>
+      <div class="section-body">
+        <div class="pill-list">
+          <div class="pill-item">Delete all saved captions from within the App at any time</div>
+          <div class="pill-item">Opt out of personalized ads via your Android device settings under <strong style="color:var(--text)">Google → Ads → Opt out of Ads Personalization</strong></div>
+          <div class="pill-item">Uninstall the App to remove all locally stored data</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Changes -->
+    <div class="section" id="changes">
+      <div class="section-header">
+        <div class="section-icon icon-orange">🔄</div>
+        <div class="section-title">Changes to This Policy</div>
+      </div>
+      <div class="section-body">
+        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. Changes are effective immediately upon posting.</p>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="section" id="contact">
+      <div class="section-header">
+        <div class="section-icon icon-purple">✉️</div>
+        <div class="section-title">Contact Us</div>
+      </div>
+      <div class="section-body">
+        <p style="margin-bottom:16px">If you have any questions about this Privacy Policy, please contact us:</p>
+        <div class="contact-card">
+          <div class="contact-icon">⚡</div>
+          <div>
+            <div class="contact-label">Email Support</div>
+            <a class="contact-email" href="/cdn-cgi/l/email-protection#4d3e383d3d223f390d2e2c3d392422232b223f2a28602c24633b283f2e2821632c3d3d"><span class="__cf_email__" data-cfemail="a8dbddd8d8c7dadce8cbc9d8dcc1c7c6cec7dacfcd85c9c186decddacbcdc486c9d8d8">[email&#160;protected]</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider between Privacy & Terms -->
+    <div style="position:relative;z-index:10;text-align:center;padding:16px 0 32px">
+      <span style="display:inline-block;background:var(--bg-section);border:1px solid var(--border);border-radius:100px;padding:8px 20px;font-family:var(--font-display);font-size:12px;font-weight:700;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase">Terms of Service</span>
+    </div>
+
+    <!-- Terms of Service -->
+    <div class="section" id="terms">
+      <div class="section-header">
+        <div class="section-icon icon-red">📜</div>
+        <div class="section-title">Terms of Service</div>
+      </div>
+      <div class="section-body">
+        <p>By downloading and using CaptionForge AI, you agree to the following terms:</p>
+        <div class="numbered-list" style="margin-top:16px">
+          <div class="numbered-item">
+            <div class="n-badge">1</div>
+            <p>Use the app for lawful purposes only</p>
+          </div>
+          <div class="numbered-item">
+            <div class="n-badge">2</div>
+            <p>Not attempt to reverse engineer the application</p>
+          </div>
+          <div class="numbered-item">
+            <div class="n-badge">3</div>
+            <p>Not use the app to generate harmful, offensive, or illegal content</p>
+          </div>
+          <div class="numbered-item">
+            <div class="n-badge">4</div>
+            <p>Accept that generated content is AI-produced and should be reviewed before publishing</p>
+          </div>
+          <div class="numbered-item">
+            <div class="n-badge">5</div>
+            <p>Accept that we are not responsible for content generated by the AI tools</p>
+          </div>
+        </div>
+        <div class="warning-box" style="margin-top:20px">
+          <div class="warning-icon">⚖️</div>
+          <p>The app is provided "as is" without warranty of any kind. We reserve the right to update these terms at any time.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="footer-logo-mark">⚡</div>
+        <span style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--text)">CaptionForge AI</span>
+      </div>
+      <p>AI Caption Generator &amp; Hashtag Tool &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#93e0e6e3e3fce1e
